@@ -61,7 +61,7 @@ export default function StatesPage() {
         </p>
         <div className="glass mt-4 rounded-[var(--radius-card)] border border-hairline p-5">
           <p className="type-label text-slate-ink">Getting to know you</p>
-          <h3 className="type-title mt-2 text-ink">{COPY.lowContext.title}</h3>
+          <p className="type-title mt-2 text-ink">{COPY.lowContext.title}</p>
           <p className="type-body mt-2 text-ink">{COPY.lowContext.body}</p>
         </div>
       </State>
@@ -100,7 +100,7 @@ export default function StatesPage() {
         ]}
       >
         <div className="glass rounded-[var(--radius-card)] border border-hairline p-5">
-          <h3 className="type-title text-ink">{COPY.unavailable.title}</h3>
+          <p className="type-title text-ink">{COPY.unavailable.title}</p>
           <p className="type-body mt-2 text-ink">{COPY.unavailable.body}</p>
         </div>
       </State>
@@ -128,7 +128,7 @@ export default function StatesPage() {
         ]}
       >
         <div className="rounded-[var(--radius-card)] border border-hairline bg-surface p-5">
-          <h3 className="type-title text-ink">{COPY.safety.title}</h3>
+          <p className="type-title text-ink">{COPY.safety.title}</p>
           <p className="type-body mt-2 text-ink">{COPY.safety.body}</p>
           <div className="mt-4 grid grid-cols-2 gap-2">
             <a href="tel:988" className="type-button flex min-h-11 items-center justify-center rounded-full bg-deep text-mist no-underline">

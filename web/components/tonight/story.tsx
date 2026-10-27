@@ -72,7 +72,7 @@ export function Story() {
         {/* Frame vs full-bleed is pure CSS, so the first paint is right before hydration. */}
         <div className="-mx-4 sm:mx-auto">
           <div className="sm:relative sm:h-[min(844px,calc(100vh-120px))] sm:min-h-[640px] sm:w-[390px] sm:rounded-[56px] sm:bg-[linear-gradient(145deg,var(--color-surface),var(--color-slate)_45%,var(--color-surface)_70%,var(--color-slate-ink))] sm:p-[9px] sm:shadow-[0_30px_80px_var(--color-hairline)]">
-            <div ref={region} className="sm:relative sm:h-full sm:overflow-hidden sm:rounded-[47px] sm:bg-mist" role="region" aria-label="Tonight's reflection">
+            <div ref={region} className="min-h-[100svh] sm:min-h-0 sm:relative sm:h-full sm:overflow-hidden sm:rounded-[47px] sm:bg-mist" role="region" aria-label="Tonight's reflection">
               <ReflectionScreen api={api} framed={framed} onCoachDone={mark} />
             </div>
           </div>

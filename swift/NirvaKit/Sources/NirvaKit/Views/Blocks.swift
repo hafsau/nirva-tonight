@@ -114,11 +114,10 @@ struct PatternCard: View {
         let occurrences = pattern.occurrences ?? []
         let window = pattern.windowDays ?? 9
         NirvaCard {
-            HStack(spacing: 0) {
-                SectionLabel(text: "Pattern")
-                if done("occurrences") {
-                    Text(" · " + Copy.occurrences(occurrences.count, window)).typeStyle(.caption).foregroundStyle(Tokens.ColorToken.slateInk)
-                }
+            // At large Dynamic Type sizes the count moves under the label instead of breaking it.
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 0) { patternLabel; count(occurrences.count, window, prefix: " · ") }
+                VStack(alignment: .leading, spacing: Tokens.Space.xxs) { patternLabel; count(occurrences.count, window, prefix: "") }
             }
             if let note, done("occurrences") {
                 Text(note).typeStyle(.caption).foregroundStyle(Tokens.ColorToken.slateInk).padding(.top, Tokens.Space.xxs)
@@ -147,6 +146,16 @@ struct PatternCard: View {
                 ToneDial(tone: $tone).padding(.top, Tokens.Space.md)
                 Button(Copy.why, action: onWhy).buttonStyle(QuietLinkStyle())
             }
+        }
+    }
+}
+
+extension PatternCard {
+    fileprivate var patternLabel: some View { SectionLabel(text: "Pattern").fixedSize() }
+
+    @ViewBuilder fileprivate func count(_ n: Int, _ window: Int, prefix: String) -> some View {
+        if done("occurrences") {
+            Text(prefix + Copy.occurrences(n, window)).typeStyle(.caption).foregroundStyle(Tokens.ColorToken.slateInk)
         }
     }
 }
