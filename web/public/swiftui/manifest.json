@@ -1,0 +1,4 @@
+{
+  "source": "macos",
+  "note": "Rendered with SwiftUI ImageRenderer on macOS (no Xcode). CI replaces these with iOS Simulator renders."
+}

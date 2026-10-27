@@ -1,0 +1,11 @@
+{
+  "$description": "Nirva voice rules as patterns. Used by tests/copy.test.ts, scripts/lint-ui.mjs (the Claude Code PostToolUse hook) and the CLAUDE.md experiment. Case-insensitive, word-bounded.",
+  "rules": [
+    { "id": "not-a-recorder", "why": "Nirva is a personal insight product, not a recorder or note-taker.", "patterns": ["track(s|ed|ing|er)?", "monitor(s|ed|ing)?", "record(s|ed|ing|ings)?", "transcripts?", "meetings?", "productiv\\w*"] },
+    { "id": "no-scores-on-feelings", "why": "Feelings aren't gauges. Show evidence counts or bands, never numbers.", "patterns": ["\\d+\\s?%", "\\d+\\s?/\\s?100", "scores?", "stress levels?", "mood levels?"] },
+    { "id": "no-absolutes", "why": "Patterns are tendencies with counts, not laws.", "patterns": ["always", "every time", "everyone", "nobody"] },
+    { "id": "no-diagnosis", "why": "Not a clinician. Describe what she sounded like, not what she has.", "patterns": ["anxi\\w*", "depress\\w*", "trauma\\w*", "toxic", "disorder\\w*", "panic\\w*", "narcissis\\w*", "bipolar"] },
+    { "id": "no-verdicts", "why": "About her state, never a verdict on her or on anyone else.", "patterns": ["draining", "drains?", "energy vampires?", "people[- ]pleaser", "you are (a|an|so)", "you're (a|an|so)"] },
+    { "id": "no-cheerleading", "why": "Honest, not flattering.", "patterns": ["you've got this", "proud of you", "amazing", "journey", "grace(ful|fully)?", "queen", "crushing it", "slay(ed|ing)?", "resilien\\w*"] }
+  ]
+}

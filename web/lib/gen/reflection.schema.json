@@ -1,0 +1,411 @@
+{
+  "$description": "Tonight's reflection, as the model returns it. Field order is generation order: a streamed snapshot fills fields top to bottom, so every block states its basis and confidence before it is allowed to say anything. The document's summary is generated last and displayed first.",
+  "root": "Reflection",
+  "types": {
+    "Basis": {
+      "doc": "One thing the reflection rests on. 'words' means a note derived from what she said; the words themselves were processed and discarded.",
+      "fields": [
+        [
+          "signal",
+          {
+            "enum": [
+              "pace",
+              "pitch",
+              "volume",
+              "tone",
+              "words",
+              "calendar",
+              "location",
+              "checkIn",
+              "correction"
+            ]
+          }
+        ],
+        [
+          "at",
+          {
+            "optional": "string"
+          },
+          "Clock time, 24h, if the basis is a moment."
+        ],
+        [
+          "note",
+          "string",
+          "Plain-language, relative to her own baseline."
+        ]
+      ]
+    },
+    "Delivery": {
+      "doc": "How a claim is said. The dial changes only this.",
+      "fields": [
+        [
+          "tone",
+          {
+            "enum": [
+              "straight",
+              "gentle",
+              "pattern"
+            ]
+          }
+        ],
+        [
+          "headline",
+          "string"
+        ],
+        [
+          "body",
+          "string"
+        ],
+        [
+          "step",
+          {
+            "optional": "string"
+          },
+          "At most one small, optional next step."
+        ]
+      ]
+    },
+    "ArcPoint": {
+      "fields": [
+        [
+          "at",
+          "string"
+        ],
+        [
+          "level",
+          "double",
+          "Pace and pitch relative to her usual for this weekday, -1...1. Drawn, never printed."
+        ]
+      ]
+    },
+    "Span": {
+      "fields": [
+        [
+          "from",
+          "string"
+        ],
+        [
+          "to",
+          "string"
+        ]
+      ]
+    },
+    "Mark": {
+      "fields": [
+        [
+          "at",
+          "string"
+        ],
+        [
+          "label",
+          "string"
+        ]
+      ]
+    },
+    "DayArc": {
+      "fields": [
+        [
+          "id",
+          "string"
+        ],
+        [
+          "basis",
+          {
+            "array": "Basis"
+          }
+        ],
+        [
+          "points",
+          {
+            "array": "ArcPoint"
+          },
+          ""
+        ],
+        [
+          "paused",
+          {
+            "array": "Span"
+          },
+          "She paused listening (an assumed control; how pausing works on the device isn't public). Nothing was heard, so the arc shows a gap, not a guess."
+        ],
+        [
+          "removed",
+          {
+            "array": "Span"
+          },
+          "Stretches she asked Nirva to forget or leave out. Also drawn as a gap."
+        ],
+        [
+          "marks",
+          {
+            "array": "Mark"
+          }
+        ],
+        [
+          "caption",
+          "string"
+        ]
+      ]
+    },
+    "Moment": {
+      "fields": [
+        [
+          "id",
+          "string"
+        ],
+        [
+          "basis",
+          {
+            "array": "Basis"
+          }
+        ],
+        [
+          "confidence",
+          {
+            "enum": [
+              "clear",
+              "tentative"
+            ]
+          }
+        ],
+        [
+          "at",
+          "string"
+        ],
+        [
+          "headline",
+          "string"
+        ],
+        [
+          "body",
+          "string"
+        ]
+      ]
+    },
+    "Occurrence": {
+      "fields": [
+        [
+          "day",
+          "string"
+        ],
+        [
+          "at",
+          "string"
+        ],
+        [
+          "note",
+          "string"
+        ]
+      ]
+    },
+    "Pattern": {
+      "fields": [
+        [
+          "id",
+          "string"
+        ],
+        [
+          "occurrences",
+          {
+            "array": "Occurrence"
+          }
+        ],
+        [
+          "windowDays",
+          "int"
+        ],
+        [
+          "threshold",
+          "int",
+          "A pattern renders only when occurrences >= threshold."
+        ],
+        [
+          "confidence",
+          {
+            "enum": [
+              "clear",
+              "tentative"
+            ]
+          }
+        ],
+        [
+          "claim",
+          "string",
+          "The substance. Identical across every delivery."
+        ],
+        [
+          "delivery",
+          {
+            "ref": "Delivery"
+          }
+        ]
+      ]
+    },
+    "Person": {
+      "fields": [
+        [
+          "name",
+          "string",
+          "First name only."
+        ],
+        [
+          "source",
+          {
+            "enum": [
+              "calendar",
+              "location",
+              "youSaid"
+            ]
+          },
+          "How Nirva knows they were there. Never another person's voice."
+        ],
+        [
+          "seen",
+          "int"
+        ],
+        [
+          "of",
+          "int"
+        ],
+        [
+          "observation",
+          "string",
+          "About her state, correlational. Never a verdict on the other person."
+        ],
+        [
+          "updatedFrom",
+          {
+            "optional": "string"
+          },
+          "Set when an earlier correction changed this reading."
+        ]
+      ]
+    },
+    "People": {
+      "fields": [
+        [
+          "id",
+          "string"
+        ],
+        [
+          "optedIn",
+          "bool"
+        ],
+        [
+          "people",
+          {
+            "array": "Person"
+          }
+        ],
+        [
+          "note",
+          "string"
+        ]
+      ]
+    },
+    "Hunch": {
+      "doc": "Low confidence changes the grammar: a question, with its reason, never a statement.",
+      "fields": [
+        [
+          "id",
+          "string"
+        ],
+        [
+          "basis",
+          {
+            "array": "Basis"
+          }
+        ],
+        [
+          "confidence",
+          {
+            "enum": [
+              "tentative"
+            ]
+          }
+        ],
+        [
+          "reason",
+          "string"
+        ],
+        [
+          "question",
+          "string"
+        ],
+        [
+          "replies",
+          {
+            "array": "string"
+          }
+        ]
+      ]
+    },
+    "Savor": {
+      "fields": [
+        [
+          "id",
+          "string"
+        ],
+        [
+          "basis",
+          {
+            "array": "Basis"
+          }
+        ],
+        [
+          "headline",
+          "string"
+        ],
+        [
+          "body",
+          "string"
+        ],
+        [
+          "step",
+          {
+            "optional": "string"
+          }
+        ]
+      ]
+    },
+    "Reflection": {
+      "fields": [
+        [
+          "day",
+          "string"
+        ],
+        [
+          "checkIn",
+          "string",
+          "Her own one-tap answer, asked before Nirva shows its read."
+        ],
+        [
+          "blocks",
+          {
+            "array": {
+              "ref": "Block"
+            }
+          }
+        ],
+        [
+          "summary",
+          "string",
+          "Generated last, shown first. Short, specific, rewritable by her."
+        ]
+      ]
+    }
+  },
+  "unions": {
+    "Block": {
+      "tag": "kind",
+      "cases": {
+        "dayArc": "DayArc",
+        "moment": "Moment",
+        "pattern": "Pattern",
+        "people": "People",
+        "hunch": "Hunch",
+        "savor": "Savor"
+      }
+    }
+  }
+}

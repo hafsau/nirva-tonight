@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520" fill="none" stroke="rgb(48,62,65)" stroke-linecap="round">
+  <!-- Original concentric ripples for the page background. Not a Nirva asset. -->
+  <ellipse cx="700" cy="420" rx="120" ry="22" stroke-opacity=".10"/>
+  <ellipse cx="700" cy="420" rx="230" ry="44" stroke-opacity=".08"/>
+  <ellipse cx="700" cy="420" rx="360" ry="70" stroke-opacity=".07"/>
+  <ellipse cx="700" cy="420" rx="510" ry="100" stroke-opacity=".055"/>
+  <ellipse cx="700" cy="420" rx="680" ry="134" stroke-opacity=".04"/>
+</svg>

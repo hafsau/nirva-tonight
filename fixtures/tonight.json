@@ -1,0 +1,465 @@
+{
+  "$description": "Maya's Friday evening reflection. Fictional person, first names only, written by hand for the concept. 'alternates' are what the model would return for a different dial position or after a correction; the replay re-streams only the fields that change.",
+  "persona": {
+    "name": "Maya",
+    "about": "34, landscape designer at a small studio. Wears the pendant most days. Opted in to people insights in week one, with family hidden.",
+    "tonight": "Friday"
+  },
+  "week": [
+    {
+      "day": "Last Thu",
+      "note": "Site plan due. Apologized first when the drawings came back with changes.",
+      "patternHit": true
+    },
+    {
+      "day": "Last Fri",
+      "note": "Quiet studio day."
+    },
+    {
+      "day": "Sat",
+      "note": "Farmers market with Priya, on foot."
+    },
+    {
+      "day": "Sun",
+      "note": "Paused listening most of the day."
+    },
+    {
+      "day": "Mon",
+      "note": "Quiet studio day."
+    },
+    {
+      "day": "Tue",
+      "note": "Planting order changed by the nursery. Apologized first.",
+      "patternHit": true
+    },
+    {
+      "day": "Wed",
+      "note": "Review moved up an hour, in a call with Dev. Apologized first.",
+      "patternHit": true
+    },
+    {
+      "day": "Thu",
+      "note": "Evening call with Lena. Maya corrected Nirva: tired, not tense.",
+      "correction": "Tired, not tense, after talking with Lena."
+    },
+    {
+      "day": "Fri",
+      "note": "Tonight. Morning walk with Priya. Site walk moved during a call with Dev.",
+      "patternHit": true
+    }
+  ],
+  "reflection": {
+    "day": "Friday",
+    "checkIn": "Calm",
+    "blocks": [
+      {
+        "kind": "dayArc",
+        "id": "arc",
+        "basis": [
+          {
+            "signal": "pace",
+            "note": "Pace and pitch across the day, against your usual Friday."
+          },
+          {
+            "signal": "calendar",
+            "note": "Two events from your calendar mark the arc."
+          }
+        ],
+        "points": [
+          {
+            "at": "07:30",
+            "level": 0.0
+          },
+          {
+            "at": "08:40",
+            "level": -0.3
+          },
+          {
+            "at": "10:00",
+            "level": -0.05
+          },
+          {
+            "at": "11:30",
+            "level": 0.05
+          },
+          {
+            "at": "12:50",
+            "level": 0.18
+          },
+          {
+            "at": "14:10",
+            "level": 0.0
+          },
+          {
+            "at": "14:40",
+            "level": 0.0
+          },
+          {
+            "at": "16:10",
+            "level": 0.05
+          },
+          {
+            "at": "16:40",
+            "level": 0.55
+          },
+          {
+            "at": "17:20",
+            "level": 0.2
+          },
+          {
+            "at": "19:30",
+            "level": 0.1
+          },
+          {
+            "at": "21:00",
+            "level": -0.1
+          }
+        ],
+        "paused": [
+          {
+            "from": "14:10",
+            "to": "14:40"
+          }
+        ],
+        "removed": [],
+        "marks": [
+          {
+            "at": "08:40",
+            "label": "Walk with Priya"
+          },
+          {
+            "at": "16:40",
+            "label": "Call with Dev"
+          }
+        ],
+        "caption": "Mostly level, one quick rise at 4:40, and a half hour you kept to yourself."
+      },
+      {
+        "kind": "moment",
+        "id": "moment-call",
+        "basis": [
+          {
+            "signal": "pace",
+            "at": "16:40",
+            "note": "Your pace rose quickly in the first minute, faster than your usual Friday afternoon."
+          },
+          {
+            "signal": "words",
+            "at": "16:40",
+            "note": "You said sorry twice before the new date came up."
+          },
+          {
+            "signal": "calendar",
+            "at": "16:40",
+            "note": "\"Call with Dev\" was on your calendar, and the site walk moved to Saturday during it."
+          }
+        ],
+        "confidence": "clear",
+        "at": "16:40",
+        "headline": "The call where the site walk moved",
+        "body": "The site walk moved to tomorrow morning during this call. You sped up, said sorry twice, and had a new plan in four minutes. It sounded like strain."
+      },
+      {
+        "kind": "pattern",
+        "id": "pattern-sorry",
+        "occurrences": [
+          {
+            "day": "Last Thu",
+            "at": "15:20",
+            "note": "Drawings came back with changes"
+          },
+          {
+            "day": "Tue",
+            "at": "10:05",
+            "note": "Nursery changed the planting order"
+          },
+          {
+            "day": "Wed",
+            "at": "09:30",
+            "note": "Review moved up an hour"
+          },
+          {
+            "day": "Fri",
+            "at": "16:40",
+            "note": "Site walk moved to Saturday"
+          }
+        ],
+        "windowDays": 9,
+        "threshold": 3,
+        "confidence": "clear",
+        "claim": "When someone else changes a plan, Maya apologizes before anything else, even when the change wasn't hers.",
+        "delivery": {
+          "tone": "gentle",
+          "headline": "You reach for sorry first",
+          "body": "Four times in nine days, someone else changed a plan, and the first thing you said was sorry. Keeping things easy for the people you work with seems to matter to you. The change wasn't yours, though."
+        }
+      },
+      {
+        "kind": "people",
+        "id": "people",
+        "optedIn": true,
+        "people": [
+          {
+            "name": "Priya",
+            "source": "youSaid",
+            "seen": 2,
+            "of": 2,
+            "observation": "Your pace slowed and you laughed more on both walks with Priya this week."
+          },
+          {
+            "name": "Dev",
+            "source": "calendar",
+            "seen": 2,
+            "of": 2,
+            "observation": "You sped up early on both calls. That may be about plans changing, not about Dev."
+          },
+          {
+            "name": "Lena",
+            "source": "youSaid",
+            "seen": 2,
+            "of": 3,
+            "observation": "You sounded tired, not tense, on evening calls with Lena. I read this differently now.",
+            "updatedFrom": "Updated from what you told me Thursday"
+          }
+        ],
+        "note": "This is about how you sounded, not about them. Family is hidden unless you show it."
+      },
+      {
+        "kind": "hunch",
+        "id": "hunch-lunch",
+        "basis": [
+          {
+            "signal": "pace",
+            "at": "12:50",
+            "note": "Two short moments around lunch, both quicker than usual."
+          }
+        ],
+        "confidence": "tentative",
+        "reason": "Based on two short moments, so I'm not sure.",
+        "question": "Was lunch rushed today?",
+        "replies": [
+          "Yes",
+          "Not really",
+          "Skip"
+        ]
+      },
+      {
+        "kind": "savor",
+        "id": "savor-walk",
+        "basis": [
+          {
+            "signal": "pace",
+            "at": "08:40",
+            "note": "Your slowest, most even pace of the day."
+          },
+          {
+            "signal": "words",
+            "at": "08:40",
+            "note": "You laughed a few times."
+          }
+        ],
+        "headline": "The walk with Priya",
+        "body": "Your voice was at its most settled all day on this morning's walk.",
+        "step": "If you want, set out your boots tonight so the morning is one less decision."
+      }
+    ],
+    "summary": "A steady Friday, one fast call, and a walk worth keeping."
+  },
+  "alternates": {
+    "patternDelivery": {
+      "straight": {
+        "tone": "straight",
+        "headline": "You apologize for other people's changes",
+        "body": "Four times in nine days, someone else changed a plan and you opened with sorry. It's a habit, not a flaw, and it's worth noticing."
+      },
+      "gentle": {
+        "tone": "gentle",
+        "headline": "You reach for sorry first",
+        "body": "Four times in nine days, someone else changed a plan, and the first thing you said was sorry. Keeping things easy for the people you work with seems to matter to you. The change wasn't yours, though."
+      },
+      "pattern": {
+        "tone": "pattern",
+        "headline": "Plan changed, you said sorry first",
+        "body": "Last Thu, Tue, Wed, today. Four times in nine days."
+      }
+    },
+    "feeling": {
+      "relieved": {
+        "ack": "Thanks. I'll read that one as relief.",
+        "headline": "The call where the site walk moved",
+        "body": "The site walk moved to tomorrow morning during this call, and you sounded relieved to have it settled. I read the speed as strain. I'll weigh it differently on your calls.",
+        "summary": "A steady Friday, a call that ended in relief, and a walk worth keeping."
+      },
+      "tired": {
+        "ack": "Thanks. I'll read that one as tired.",
+        "headline": "The call where the site walk moved",
+        "body": "The site walk moved to tomorrow morning, at the end of a long week. I read your quicker pace as strain. Tired fits better, and I'll keep that in mind.",
+        "summary": "A steady Friday, a tired call, and a walk worth keeping."
+      },
+      "focused": {
+        "ack": "Thanks. I'll read that one as focused.",
+        "headline": "The call where the site walk moved",
+        "body": "The site walk moved to tomorrow morning and you got straight to solving it. The speed was focus, not strain. Noted.",
+        "summary": "A steady Friday, a focused call, and a walk worth keeping."
+      }
+    },
+    "feelingPatternNote": "Still counted: you said sorry first. I'll read the speed differently.",
+    "removal": {
+      "wrongMoment": {
+        "ack": "Got it. I've taken 4:40 out of tonight."
+      },
+      "forget": {
+        "ack": "Forgotten. The notes from 4:40 are deleted, and I won't use them again."
+      },
+      "patternNote": "Updated: tonight's call is no longer counted",
+      "patternDelivery": {
+        "straight": {
+          "tone": "straight",
+          "headline": "You apologize for other people's changes",
+          "body": "Three times in nine days, someone else changed a plan and you opened with sorry. It's a habit, not a flaw, and it's worth noticing."
+        },
+        "gentle": {
+          "tone": "gentle",
+          "headline": "You reach for sorry first",
+          "body": "Three times in nine days, someone else changed a plan, and the first thing you said was sorry. Keeping things easy for the people you work with seems to matter to you. The change wasn't yours, though."
+        },
+        "pattern": {
+          "tone": "pattern",
+          "headline": "Plan changed, you said sorry first",
+          "body": "Last Thu, Tue, Wed. Three times in nine days."
+        }
+      },
+      "summary": "A steady Friday and a walk worth keeping.",
+      "arc": {
+        "kind": "dayArc",
+        "id": "arc",
+        "basis": [
+          {
+            "signal": "pace",
+            "note": "Pace and pitch across the day, against your usual Friday."
+          },
+          {
+            "signal": "correction",
+            "note": "You asked me to leave out 4:40."
+          }
+        ],
+        "points": [
+          {
+            "at": "07:30",
+            "level": 0.0
+          },
+          {
+            "at": "08:40",
+            "level": -0.3
+          },
+          {
+            "at": "10:00",
+            "level": -0.05
+          },
+          {
+            "at": "11:30",
+            "level": 0.05
+          },
+          {
+            "at": "12:50",
+            "level": 0.18
+          },
+          {
+            "at": "14:10",
+            "level": 0.0
+          },
+          {
+            "at": "14:40",
+            "level": 0.0
+          },
+          {
+            "at": "16:10",
+            "level": 0.05
+          },
+          {
+            "at": "17:20",
+            "level": 0.2
+          },
+          {
+            "at": "19:30",
+            "level": 0.1
+          },
+          {
+            "at": "21:00",
+            "level": -0.1
+          }
+        ],
+        "paused": [
+          {
+            "from": "14:10",
+            "to": "14:40"
+          }
+        ],
+        "removed": [
+          {
+            "from": "16:10",
+            "to": "17:20"
+          }
+        ],
+        "marks": [
+          {
+            "at": "08:40",
+            "label": "Walk with Priya"
+          }
+        ],
+        "caption": "Mostly level, a half hour you kept to yourself, and a stretch you asked me to leave out."
+      },
+      "people": {
+        "kind": "people",
+        "id": "people",
+        "optedIn": true,
+        "people": [
+          {
+            "name": "Priya",
+            "source": "youSaid",
+            "seen": 2,
+            "of": 2,
+            "observation": "Your pace slowed and you laughed more on both walks with Priya this week."
+          },
+          {
+            "name": "Dev",
+            "source": "calendar",
+            "seen": 1,
+            "of": 1,
+            "observation": "You sped up early on Wednesday's call. That may be about the plan changing, not about Dev."
+          },
+          {
+            "name": "Lena",
+            "source": "youSaid",
+            "seen": 2,
+            "of": 3,
+            "observation": "You sounded tired, not tense, on evening calls with Lena. I read this differently now.",
+            "updatedFrom": "Updated from what you told me Thursday"
+          }
+        ],
+        "note": "This is about how you sounded, not about them. Family is hidden unless you show it."
+      }
+    }
+  },
+  "drafts": {
+    "summary": [
+      {
+        "text": "Today was a journey of resilience and quiet growth.",
+        "why": "Says nothing she couldn't say about any day. Reads as generated."
+      },
+      {
+        "text": "Overall a positive day with moderate stress levels.",
+        "why": "A score in a sentence. Feelings aren't a gauge, and 'moderate' invites her to argue with it."
+      },
+      {
+        "text": "You handled a schedule change with grace and stayed open-hearted.",
+        "why": "Flattery. Nirva shouldn't grade her character, kindly or not."
+      },
+      {
+        "text": "A steady Friday, one fast call, and a walk worth keeping.",
+        "why": "Shipped. Specific, short, three things she'll recognize, ends on something good.",
+        "shipped": true
+      }
+    ]
+  }
+}

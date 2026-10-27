@@ -1,0 +1,136 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/*
+ * Colors, spacing, radii and type come only from tokens.css (generated from
+ * tokens/tokens.json, the same source as NirvaKit's Tokens.swift). This file
+ * maps them into Tailwind and adds motion. No raw hex below this line.
+ */
+@theme inline {
+  --color-mist: var(--color-mist);
+  --color-surface: var(--color-surface);
+  --color-glass: var(--color-glass);
+  --color-glass-strong: var(--color-glass-strong);
+  --color-ink: var(--color-ink);
+  --color-deep: var(--color-deep);
+  --color-slate: var(--color-slate);
+  --color-slate-ink: var(--color-slate-ink);
+  --color-hairline: var(--color-hairline);
+  --font-serif: var(--font-serif-face), Georgia, serif;
+  --font-sans: var(--font-sans-face), system-ui, sans-serif;
+  --font-label: var(--font-label-face), system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+:root {
+  --font-serif: var(--font-serif-face), Georgia, serif;
+  --font-sans: var(--font-sans-face), system-ui, sans-serif;
+  --font-label: var(--font-label-face), system-ui, sans-serif;
+  /* SwiftUI .spring(duration: 0.52, bounce: 0.12), sampled. */
+  --ease-settle: linear(0, 0.06 4%, 0.23 9%, 0.5 17%, 0.75 26%, 0.92 36%, 1.01 47%, 1.03 56%, 1.02 68%, 1 84%, 1);
+}
+
+html {
+  background: var(--color-mist);
+  color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-mist);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-deep);
+  outline-offset: 2px;
+}
+
+/* A field arriving: blur to sharp, a small rise, opacity. */
+@keyframes settle {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+.settle {
+  animation: settle var(--motion-settle) var(--ease-settle) both;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.breathe {
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--color-hairline);
+  }
+  50% {
+    box-shadow: 0 0 0 6px var(--color-hairline);
+  }
+}
+.coach {
+  animation: nudge 1.8s ease-in-out 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settle {
+    animation: fade var(--motion-reduced) linear both;
+  }
+  .breathe,
+  .coach {
+    animation: none;
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* Glass: the measured nirva.life pill fill, blurred over mist. */
+.glass {
+  background: var(--color-glass);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  backdrop-filter: blur(18px) saturate(1.1);
+}
+
+.placeholder-line {
+  display: block;
+  height: 0.7em;
+  border-radius: var(--radius-pill);
+  background: var(--color-hairline);
+}
+
+.ripple-bg {
+  background-image: url("/ripple.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 115%;
+  background-size: 1400px auto;
+}
+
+.prose-concept p + p {
+  margin-top: var(--space-sm);
+}

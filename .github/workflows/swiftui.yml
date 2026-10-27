@@ -1,0 +1,68 @@
+name: SwiftUI
+
+# Builds NirvaKit for iOS, runs its tests on the iOS Simulator, and renders
+# every catalog entry with ImageRenderer. The PNGs are what /system shows.
+on:
+  push:
+    branches: [main]
+    paths: ["swift/**", "fixtures/**", "tokens/**", "schema/**", ".github/workflows/swiftui.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    name: Test and render on iOS Simulator
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select newest Xcode
+        run: |
+          XCODE=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+      - name: Pick an iPhone simulator
+        id: sim
+        run: |
+          read -r UDID NAME RUNTIME < <(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          d = json.load(sys.stdin)["devices"]
+          c = [(k, x) for k, v in d.items() if "iOS" in k for x in v if x["name"].startswith("iPhone") and "Pro" in x["name"] and "Max" not in x["name"]]
+          c.sort(key=lambda t: t[0])
+          k, x = c[-1]
+          print(x["udid"], x["name"].replace(" ", "_"), k.split(".")[-1])')
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          echo "name=${NAME//_/ }" >> "$GITHUB_OUTPUT"
+          echo "runtime=$RUNTIME" >> "$GITHUB_OUTPUT"
+          echo "Using $NAME ($RUNTIME)"
+      - name: Build, test, render
+        working-directory: swift/NirvaKit
+        env:
+          TEST_RUNNER_RENDER_DIR: ${{ github.workspace }}/renders
+        run: xcodebuild test -scheme NirvaKit -destination "id=${{ steps.sim.outputs.udid }}"
+      - name: Manifest
+        run: |
+          cat > renders/manifest.json <<JSON
+          { "source": "ios-simulator", "sha": "${{ github.sha }}", "device": "${{ steps.sim.outputs.name }}", "os": "${{ steps.sim.outputs.runtime }}", "xcode": "$(xcodebuild -version | head -1)", "date": "$(date -u +%Y-%m-%d)" }
+          JSON
+          ls -la renders
+      - uses: actions/upload-artifact@v4
+        with:
+          name: swiftui-renders
+          path: renders
+          retention-days: 30
+
+  generable:
+    name: "@Generable mirror compiles (Foundation Models)"
+    runs-on: macos-26
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select newest Xcode
+        run: sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"
+      - name: Build with NIRVA_GENERABLE
+        working-directory: swift/NirvaKit
+        env:
+          NIRVA_GENERABLE: "1"
+        run: xcodebuild build -scheme NirvaKit -destination "generic/platform=iOS Simulator"
