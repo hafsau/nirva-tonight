@@ -2,7 +2,7 @@
 
 An evening reflection for an AI wearable, built as generative UI: honest content, gentle delivery, and a UI that says when it's guessing. Every card exists twice, as a React component and as a SwiftUI view, generated from one schema and one token file and replaying the same stream.
 
-**Live:** https://web-black-eight-87.vercel.app · **Case study:** `/about` · **For engineers:** `/system`
+**Live:** https://tonight-rendered.vercel.app · **Case study:** `/about` · **For engineers:** `/system`
 
 > **Not affiliated with Nirva Labs.** An unofficial concept by [Hafsa Usmani](https://hafsausmani.com), made from public information for the Founding Product Designer role. Maya is fictional and every line is mock data. No Nirva logo, product images, or code. Typefaces are Libre Baskerville, Nunito Sans and Nunito (SIL OFL), the faces nirva.life uses.
 
