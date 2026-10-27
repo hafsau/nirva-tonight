@@ -107,7 +107,7 @@ export default function AboutPage() {
 
       <Part id="role" title="Next to Nirva&rsquo;s" accent="design lead">
         <p>
-          This is one surface, explored deeply, to show how I&rsquo;d work: design and production SwiftUI in the same hands, with the system and the agent conventions kept up as I go. It isn&rsquo;t a redesign of Nirva&rsquo;s app or a claim about its direction. On a
+          This is one surface, explored deeply, to show how I&rsquo;d work: design and SwiftUI in the same hands, with the system and the agent conventions kept up as I go. It isn&rsquo;t a redesign of Nirva&rsquo;s app or a claim about its direction. On a
           real team the design lead sets that direction, and I&rsquo;d want my work to make theirs ship faster.
         </p>
       </Part>
