@@ -34,7 +34,7 @@ function workspace(withConventions) {
 
 function extractSwift(text) {
   const m = text.match(/```swift\n([\s\S]*?)```/);
-  return m ? m[1] : text;
+  return m ? m[1] : null;
 }
 
 function builds(dir, swift) {
@@ -65,6 +65,12 @@ for (const arm of ["without", "with"]) {
       text = res.stdout ?? "";
     }
     const swift = extractSwift(text);
+    // An auth error or refusal isn't a data point. Stop rather than record it.
+    if (!swift || !/struct\s+TomorrowCard/.test(swift)) {
+      console.error(`${arm} ${i}: no TomorrowCard in the reply, stopping. First 300 chars:\n${(text || res.stderr || "").slice(0, 300)}`);
+      rmSync(dir, { recursive: true, force: true });
+      process.exit(1);
+    }
     const findings = lintSource(swift, "TomorrowCard.swift");
     const ok = builds(dir, swift);
     writeFileSync(join(out, `${arm}-${i}.swift`), swift);

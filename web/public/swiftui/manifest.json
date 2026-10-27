@@ -1,4 +1,8 @@
 {
-  "source": "macos",
-  "note": "Rendered with SwiftUI ImageRenderer on macOS (no Xcode). CI replaces these with iOS Simulator renders."
+  "source": "ios-simulator",
+  "sha": "3b9362e8e7f30ebb8dc96de5f1117241d71a7110",
+  "device": "iPhone 17 Pro",
+  "os": "iOS 26.5",
+  "xcode": "Xcode 26.6",
+  "date": "2026-10-27"
 }
