@@ -40,7 +40,7 @@ jobs:
         working-directory: swift/NirvaKit
         env:
           TEST_RUNNER_RENDER_DIR: ${{ github.workspace }}/renders
-        run: xcodebuild test -scheme NirvaKit -destination "id=${{ steps.sim.outputs.udid }}"
+        run: xcodebuild test -scheme NirvaKit -destination "id=${{ steps.sim.outputs.udid }}" CODE_SIGNING_ALLOWED=NO
       - name: Manifest
         run: |
           cat > renders/manifest.json <<JSON
@@ -65,4 +65,4 @@ jobs:
         working-directory: swift/NirvaKit
         env:
           NIRVA_GENERABLE: "1"
-        run: xcodebuild build -scheme NirvaKit -destination "generic/platform=iOS Simulator"
+        run: xcodebuild build -scheme NirvaKit -destination "generic/platform=iOS Simulator" CODE_SIGNING_ALLOWED=NO

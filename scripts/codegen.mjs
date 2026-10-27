@@ -175,7 +175,7 @@ out("swift/NirvaKit/Sources/NirvaKit/Gen/Generable.swift", gen);
 
 // ---------- fixture copies ----------
 copyFileSync(join(root, "schema/reflection.schema.json"), join(root, "web/lib/gen/reflection.schema.json"));
-for (const dest of ["web/lib/gen/tonight.json", "swift/NirvaKit/Sources/NirvaKit/Resources/tonight.json"]) {
+for (const dest of ["web/lib/gen/tonight.json", "swift/NirvaKit/Sources/NirvaKit/Bundled/tonight.json"]) {
   mkdirSync(dirname(join(root, dest)), { recursive: true });
   copyFileSync(join(root, "fixtures/tonight.json"), join(root, dest));
   console.log("copied fixtures/tonight.json ->", dest);

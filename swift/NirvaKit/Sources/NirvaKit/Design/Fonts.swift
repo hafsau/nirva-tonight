@@ -9,7 +9,7 @@ public enum NirvaFonts {
     @MainActor public static func register() {
         guard !registered else { return }
         registered = true
-        let urls = Bundle.module.urls(forResourcesWithExtension: "ttf", subdirectory: "Resources/Fonts") ?? []
+        let urls = Bundle.module.urls(forResourcesWithExtension: "ttf", subdirectory: "Bundled/Fonts") ?? []
         for url in urls {
             CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
         }

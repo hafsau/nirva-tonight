@@ -13,7 +13,7 @@ let package = Package(
     targets: [
         .target(
             name: "NirvaKit",
-            resources: [.copy("Resources")],
+            resources: [.copy("Bundled")],
             swiftSettings: generable ? [.define("NIRVA_GENERABLE")] : []
         ),
         .testTarget(name: "NirvaKitTests", dependencies: ["NirvaKit"]),

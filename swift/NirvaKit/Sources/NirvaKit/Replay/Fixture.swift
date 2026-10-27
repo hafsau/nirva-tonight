@@ -44,7 +44,7 @@ public struct Fixture: Decodable, Sendable {
     }
 
     static func resource(_ name: String, _ ext: String) throws -> URL {
-        guard let url = Bundle.module.url(forResource: name, withExtension: ext, subdirectory: "Resources") else {
+        guard let url = Bundle.module.url(forResource: name, withExtension: ext, subdirectory: "Bundled") else {
             throw CocoaError(.fileNoSuchFile)
         }
         return url
